@@ -1,6 +1,6 @@
 "use client";
 import { Github, Twitter } from "lucide-react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import {
@@ -11,8 +11,28 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        let navbar = document.getElementById("navbar");
+        navbar?.classList.add("glassy");
+        navbar?.classList.remove("remove-glassy");
+      } else {
+        let navbar = document.getElementById("navbar");
+        navbar?.classList.remove("glassy");
+        navbar?.classList.add("remove-glassy");
+      }
+    });
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
+
   return (
-    <div className="fixed z-10 flex items-center justify-between w-full max-w-md md:max-w-3xl xl:max-w-6xl top-4 text-secondary_color">
+    <div
+      id="navbar"
+      className="fixed z-50 flex items-center justify-between w-full max-w-md px-4 py-2 md:max-w-3xl xl:max-w-6xl top-4 text-secondary_color"
+    >
       <div>Study Trackr</div>
       <NavigationMenu className="text-secondary_color">
         <NavigationMenuList className="border border-gray-200/[.09] rounded-xl overflow-hidden">

@@ -66,6 +66,30 @@
 
     --ring: 217.2 32.6% 17.5%;
   }
+
+  .glassy {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 0.25rem;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .remove-glassy {
+    animation: backgroundTransition 0.5s ease-in;
+  }
+
+  @keyframes backgroundTransition {
+    0% {
+      background-color: rgba(255, 255, 255, 0.13);
+      border-radius: 0.25rem;
+      backdrop-filter: blur(8px);
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0);
+      border-radius: 0.25rem;
+      backdrop-filter: blur(0px);
+    }
+  }
 }
 
 @layer base {

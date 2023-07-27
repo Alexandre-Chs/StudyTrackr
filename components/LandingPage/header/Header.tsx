@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="z-50 max-w-md mx-auto pt-28 md:pt-48 text-secondary_color md:max-w-3xl xl:max-w-6xl">
+    <header className="z-50 max-w-md mx-auto transition pt-28 md:pt-48 text-secondary_color md:max-w-3xl xl:max-w-6xl">
       <div>
         <h1 className="text-4xl font-extrabold tracking-tight text-center md:text-5xl">
           Optimize Your Study Sessions with Study Trackr - Excel in Your
