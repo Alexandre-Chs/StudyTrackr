@@ -1,14 +1,23 @@
-import Link from "next/link";
+import Header from "@/components/LandingPage/header/Header";
+import Navbar from "@/components/LandingPage/navigation_bar/Navbar";
+import LineSVG from "@/app/assets/LandingPage/line.svg";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
-      <Link href="/application" className="font-bold">
-        Go to app
-      </Link>
-      <Link href="/api/auth/signout" className="font-bold">
-        deconnecte
-      </Link>
-    </div>
+    <>
+      <div className="w-full flex items-center justify-center">
+        <Navbar />
+      </div>
+      <main className="bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-third_color via-third_color to-main_color h-screen relative">
+        <Header />
+        <Image
+          priority
+          src={LineSVG}
+          alt="svg line"
+          className="absolute bottom-0"
+        />
+      </main>
+    </>
   );
 }
