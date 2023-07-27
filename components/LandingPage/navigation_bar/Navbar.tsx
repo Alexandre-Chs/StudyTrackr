@@ -12,7 +12,7 @@ import {
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between w-full max-w-md md:max-w-3xl xl:max-w-6xl fixed top-4 text-secondary_color">
+    <div className="fixed z-10 flex items-center justify-between w-full max-w-md md:max-w-3xl xl:max-w-6xl top-4 text-secondary_color">
       <div>Study Trackr</div>
       <NavigationMenu className="text-secondary_color">
         <NavigationMenuList className="border border-gray-200/[.09] rounded-xl overflow-hidden">
