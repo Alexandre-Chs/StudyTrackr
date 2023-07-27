@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="z-50 max-w-md mx-auto transition pt-28 md:pt-48 text-secondary_color md:max-w-3xl xl:max-w-6xl">
+    <header className="relative z-50 max-w-md mx-auto transition pt-28 md:pt-48 text-secondary_color md:max-w-3xl xl:max-w-6xl">
       <div>
         <h1 className="text-4xl font-extrabold tracking-tight text-center md:text-5xl">
           Optimize Your Study Sessions with Study Trackr - Excel in Your
@@ -15,7 +15,7 @@ const Header = () => {
           exams confidently. Join thousands of satisfied students!
         </p>
       </div>
-      <div className="flex flex-col items-center justify-center mt-8 md:flex-row">
+      <div className="z-50 flex flex-col items-center justify-center mt-8 md:flex-row">
         <Button
           variant="outline"
           className="w-[80%] md:w-auto mx-auto md:mx-2 flex justify-center items-center px-8 py-4"

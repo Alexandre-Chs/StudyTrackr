@@ -19,7 +19,7 @@ const DashboardImage = () => {
           priority
           src={LineSVG}
           alt="svg line"
-          className="absolute left-0 w-full -bottom-1/4"
+          className="absolute left-0 w-full z-1 -bottom-1/4"
         />
       </div>
     </>
