@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.bodyu {
+  background-color: #f4f1e9;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -72,6 +75,7 @@
     background: hsla(0, 0%, 100%, 0.123);
     border-radius: 0.25rem;
     transition: background 0.4s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.041), 0 3px 6px rgba(0, 0, 0, 0.034);
   }
 
   .remove-glassy {
