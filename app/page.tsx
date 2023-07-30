@@ -3,6 +3,8 @@ import Navbar from "@/components/LandingPage/navigation_bar/Navbar";
 
 import DashboardImage from "@/components/LandingPage/header/DashboardImage";
 import ExplainProject from "@/components/LandingPage/content/ExplainProject";
+import QuestionsAboutProject from "@/components/LandingPage/questions/QuestionsAboutProject";
+import Footer from "@/components/LandingPage/footer/Footer";
 
 export default function Home() {
   return (
@@ -15,7 +17,11 @@ export default function Home() {
         <DashboardImage />
         <article className="w-full bg-secondary_color">
           <ExplainProject />
+          <QuestionsAboutProject />
         </article>
+        <footer>
+          <Footer />
+        </footer>
       </main>
     </>
   );

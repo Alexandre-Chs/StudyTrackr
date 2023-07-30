@@ -21,6 +21,7 @@ module.exports = {
         secondary_color: "#F4F1E9",
         third_color: "#2962FF",
         fourth_color: "#FFC107",
+        paragrapheColor: "#6E6E6E",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

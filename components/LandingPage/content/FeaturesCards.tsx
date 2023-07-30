@@ -1,15 +1,35 @@
 import React from "react";
-import Image from "next/image";
+import { PropsWithChildren } from "react";
 
-const FeaturesCards = ({ icon }) => {
+type FeaturesCardsProps = {
+  title: string;
+  description: string;
+};
+
+const FeaturesCards = ({
+  children,
+  title,
+  description,
+}: PropsWithChildren<FeaturesCardsProps>) => {
   return (
-    <>
-      <div className="w-48 p-8 border-2 h-36">
-        <h3>Name feature</h3>
-        <p>Description</p>
+    <div className="px-8 bg-white border rounded-lg xl:w-full xl:h-full border-black/20 py-9">
+      <div className="">
+        <div>{children}</div>
+        <h3 className="py-2 text-2xl font-bold md:text-3xl text-third_color">
+          {title}
+        </h3>
+        <div>
+          {description.split("\n").map((line, index) => (
+            <p
+              key={index}
+              className="mb-2 text-sm md:text-base text-paragrapheColor"
+            >
+              {line}
+            </p>
+          ))}
+        </div>
       </div>
-      <div>{icon}</div>
-    </>
+    </div>
   );
 };
 
