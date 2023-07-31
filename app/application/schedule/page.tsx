@@ -1,9 +1,9 @@
-import Link from "next/link";
+import React from "react";
 
-const Page = async () => {
+const Page = () => {
   return (
     <div className="text-white">
-      <h1>APP</h1>
+      <p>coucou du schedule</p>
     </div>
   );
 };

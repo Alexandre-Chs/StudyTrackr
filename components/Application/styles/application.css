@@ -1,0 +1,28 @@
+.backgroundNavbar {
+  background-image: linear-gradient(
+    to right bottom,
+    #0a0615,
+    #0b0717,
+    #0d0718,
+    #0e081a,
+    #0f081b,
+    #0f081b,
+    #0f081b,
+    #0f081b,
+    #0e081a,
+    #0d0718,
+    #0b0717,
+    #0a0615
+  );
+}
+
+.backgroundContent {
+  background-image: linear-gradient(
+    to right bottom,
+    #100a34,
+    #130b2c,
+    #150d25,
+    #150e1e,
+    #131017
+  );
+}

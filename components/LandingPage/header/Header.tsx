@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import ScrollLink from "@/components/tools/ScrollLink";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -24,7 +25,7 @@ const Header = () => {
           variant="outline"
           className="w-[80%] md:w-auto mx-auto md:mx-2 flex justify-center items-center px-8 py-4"
         >
-          Let&apos;s go !
+          <Link href="/application">Let&apos;s go !</Link>
           <ArrowRight size={20} />
         </Button>
         <Button
