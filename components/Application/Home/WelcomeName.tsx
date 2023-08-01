@@ -6,7 +6,7 @@ const WelcomeName = () => {
   return (
     <div className="text-white">
       {/* Setup name on database login after */}
-      <h3 className="text-4xl">Hello, Alexandre !</h3>
+      <h3 className="text-4xl">Hello Alexandre !</h3>
       <p className="text-base text-textViolet">
         {currentDate.getDate()} {month[currentDate.getMonth()]}{" "}
         {currentDate.getFullYear()}

@@ -18,7 +18,7 @@ const QuestionsAboutProject = () => {
         Here is a compilation of topics that we believe you might have questions
         about regarding Study Trackr.
       </p>
-      <Accordion type="single" collapsible className="w-full mt-12">
+      <Accordion type="single" collapsible className="w-full mt-12 [&>*]:p-4">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
           <AccordionContent>

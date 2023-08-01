@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const CalendarNav = () => {
   return (
-    <div className="flex">
+    <div className="flex px-2 rounded-lg hover:bg-lightViolet">
       <div className="mr-2">
         <CalendarDays />
       </div>

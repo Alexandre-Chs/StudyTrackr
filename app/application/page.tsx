@@ -18,13 +18,13 @@ const Home = () => {
   };
 
   return (
-    <div className="flex w-full p-10">
-      <div className="w-full">
+    <div className="flex flex-col items-start justify-between w-full h-full p-10 xl:flex-row">
+      <div className="w-full max-w-5xl">
         <WelcomeName />
         <TaskToDo />
         <IncommingExam />
       </div>
-      <div className="w-auto py-4 pl-8">
+      <div className="flex w-full mt-12 xl:pl-8 xl:w-auto xl:flex-col xl:mt-28">
         <LittleCalendar onDateChange={handleSelectedDate} />
         <Objectives />
       </div>

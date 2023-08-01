@@ -17,10 +17,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        main_color: "#1E1E1E",
+        main_color: "#09031b",
         secondary_color: "#F4F1E9",
-        third_color: "#2962FF",
-        fourth_color: "#FFC107",
+        third_color: "#09031b",
         paragrapheColor: "#6E6E6E",
         navbarAppColor: "#09031b",
         lightViolet: "rgba(35,39,74,0.5)",

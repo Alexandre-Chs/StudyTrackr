@@ -4,7 +4,7 @@ import React from "react";
 
 const Objectives = () => {
   return (
-    <div className="w-full p-4 mt-6 border-2 rounded-lg bg-navbarAppColor border-lightViolet text-textViolet">
+    <div className="w-full p-4 ml-4 border-2 rounded-lg xl:w-auto xl:ml-0 xl:mt-6 bg-navbarAppColor border-lightViolet text-textViolet">
       <div className="flex justify-between mb-4">
         <h3 className="text-lg font-medium text-white">Objectives</h3>
         <Link href="#" className="font-light underline underline-offset-2">

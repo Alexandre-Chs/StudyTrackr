@@ -30,13 +30,13 @@ const Navbar = () => {
       }
 
       if (scrollPosition + 350 > halfScrollHeight) {
-        navbar?.classList.remove("text-secondary_color");
-        navbarChildren?.classList.remove("text-secondary_color");
+        navbar?.classList.remove("text-textViolet");
+        navbarChildren?.classList.remove("text-textViolet");
         navbar?.classList.add("text-black");
         navbarChildren?.classList.add("text-black");
       } else {
-        navbar?.classList.add("text-secondary_color");
-        navbarChildren?.classList.add("text-secondary_color");
+        navbar?.classList.add("text-textViolet");
+        navbarChildren?.classList.add("text-textViolet");
         navbar?.classList.remove("text-black");
         navbarChildren?.classList.remove("text-black");
       }
@@ -49,10 +49,10 @@ const Navbar = () => {
   return (
     <div
       id="navbar"
-      className="fixed z-[1000] flex items-center justify-between w-screen py-2 top-0 text-secondary_color px-36"
+      className="fixed z-[1000] flex items-center justify-between w-screen py-2 top-0 px-36 text-textViolet"
     >
-      <div>Study Trackr</div>
-      <NavigationMenu className="text-secondary_color" id="navbar-children">
+      <div className="text-xl font-medium">Study Trackr</div>
+      <NavigationMenu className="text-textViolet" id="navbar-children">
         <NavigationMenuList className="border border-gray-200/[.09] rounded-xl overflow-hidden">
           <NavigationMenuItem>
             <div className={navigationMenuTriggerStyle()}>
