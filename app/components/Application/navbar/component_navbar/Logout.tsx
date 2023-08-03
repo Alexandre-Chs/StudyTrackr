@@ -1,7 +1,8 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+
 import { LogOut } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/app/components/ui/button";
 
 const Logout = () => {
   return (

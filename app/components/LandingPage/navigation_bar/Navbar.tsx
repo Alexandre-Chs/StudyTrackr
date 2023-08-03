@@ -2,14 +2,15 @@
 import { Github, Twitter } from "lucide-react";
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import ScrollLink from "@/components/tools/ScrollLink";
+} from "../../ui/navigation-menu";
+import ScrollLink from "../../tools/ScrollLink";
+import { navigationMenuTriggerStyle } from "../../ui/navigation-menu";
 
 const Navbar = () => {
   useEffect(() => {

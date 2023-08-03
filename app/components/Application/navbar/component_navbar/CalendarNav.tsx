@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "../../../ui/accordion";
 import { CalendarDays } from "lucide-react";
 import Link from "next/link";
 

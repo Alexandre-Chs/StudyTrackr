@@ -1,8 +1,10 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+
 import { ArrowDown, ArrowRight } from "lucide-react";
-import ScrollLink from "@/components/tools/ScrollLink";
+
 import Link from "next/link";
+import ScrollLink from "../../tools/ScrollLink";
+import { Button } from "../../ui/button";
 
 const Header = () => {
   return (

@@ -8,6 +8,7 @@ const DashboardImage = () => {
     <>
       <div className="relative flex flex-col items-center justify-center w-full">
         <Image
+          priority
           src={dashboard}
           alt="dashboard example"
           width={1200}

@@ -1,4 +1,4 @@
-import CardTask from "@/components/ui/cardTask";
+import CardTask from "../../ui/cardTask";
 import Link from "next/link";
 import React from "react";
 import { ListChecks } from "lucide-react";

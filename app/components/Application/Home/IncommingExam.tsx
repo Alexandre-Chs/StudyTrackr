@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Book } from "lucide-react";
-import CardExams from "@/components/ui/cardExams";
+import CardExams from "../../ui/cardExams";
 
 const IncommingExam = () => {
   return (
