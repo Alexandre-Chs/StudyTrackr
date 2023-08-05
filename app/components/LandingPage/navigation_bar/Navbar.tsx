@@ -50,9 +50,11 @@ const Navbar = () => {
   return (
     <div
       id="navbar"
-      className="fixed z-[1000] flex items-center justify-between w-screen py-2 top-0 px-36 text-textViolet"
+      className="fixed z-[1000] flex items-center justify-center w-screen py-2 top-0 px-36 text-textViolet left-0"
     >
-      <div className="text-xl font-medium">Study Trackr</div>
+      <div className="absolute left-0 pl-16 text-xl font-medium">
+        Study Trackr
+      </div>
       <NavigationMenu className="text-textViolet" id="navbar-children">
         <NavigationMenuList className="border border-gray-200/[.09] rounded-xl overflow-hidden">
           <NavigationMenuItem>
@@ -72,7 +74,7 @@ const Navbar = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex">
+      <div className="absolute flex right-[19px] pr-16">
         <Link href="https://github.com/Alexandre-Chs" passHref>
           <Github className="mr-2 cursor-pointer" size={20} />
         </Link>

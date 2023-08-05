@@ -2,9 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import bcrypt from "bcrypt";
+import prisma from "../../../../prisma/prisma";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -22,8 +21,38 @@ export const authOptions: NextAuthOptions = {
           type: "password",
           placeholder: "Password",
         },
+        email: { label: "Email", type: "email", placeholder: "Email" },
       },
-      async authorize(credentials, req) {},
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials.password) {
+          return null;
+        }
+
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials?.email,
+          },
+        });
+
+        if (!user) {
+          return null;
+        }
+
+        const passwordsMatch = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword as string
+        );
+
+        console.log(passwordsMatch);
+
+        if (!passwordsMatch) {
+          return null;
+        }
+
+        // console.log(user);
+        // console.log(credentials);
+        return user;
+      },
     }),
   ],
   session: {
@@ -31,4 +60,7 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === "development",
+  pages: {
+    signIn: "/auth/login",
+  },
 };

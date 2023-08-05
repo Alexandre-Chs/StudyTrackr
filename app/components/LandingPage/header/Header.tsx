@@ -23,13 +23,15 @@ const Header = () => {
         </p>
       </div>
       <div className="z-50 flex flex-col items-center justify-center mt-8 md:flex-row">
-        <Button
-          variant="outline"
-          className="w-[80%] md:w-auto mx-auto md:mx-2 flex justify-center items-center px-8 py-4"
-        >
-          <Link href="/auth/register">Let&apos;s go !</Link>
-          <ArrowRight size={20} />
-        </Button>
+        <Link href="/auth/login" className="w-full md:w-auto">
+          <Button
+            variant="outline"
+            className="w-[80%] md:w-auto mx-auto md:mx-2 flex justify-center items-center px-8 py-4"
+          >
+            Let&apos;s go !
+            <ArrowRight size={20} />
+          </Button>
+        </Link>
         <Button
           variant="outline"
           className="w-[80%] md:w-auto mx-auto md:mx-2 mt-4 md:mt-0 flex justify-center items-center px-8 py-"

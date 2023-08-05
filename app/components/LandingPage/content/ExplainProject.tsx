@@ -9,7 +9,7 @@ const ExplainProject = () => {
         id="features"
         className="relative flex flex-col items-center justify-center w-full max-w-xs pt-44 md:max-w-3xl xl:max-w-6xl sm:max-w-lg xs:max-w-md z-[100] mx-auto"
       >
-        <h2 className="text-4xl font-bold text-center md:text-5xl text-third_color">
+        <h2 className="mt-16 text-4xl font-bold text-center md:text-5xl text-third_color">
           Boost Your Study Game with Study Trackr
         </h2>
         <p className="mt-4 text-base md:text-xl text-paragrapheColor">
