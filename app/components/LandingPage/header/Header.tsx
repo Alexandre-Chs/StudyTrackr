@@ -27,7 +27,7 @@ const Header = () => {
           variant="outline"
           className="w-[80%] md:w-auto mx-auto md:mx-2 flex justify-center items-center px-8 py-4"
         >
-          <Link href="/application">Let&apos;s go !</Link>
+          <Link href="/auth/register">Let&apos;s go !</Link>
           <ArrowRight size={20} />
         </Button>
         <Button

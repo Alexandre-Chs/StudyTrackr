@@ -1,11 +1,11 @@
 import React from "react";
 import { month } from "../../../components/utils/months.js";
 import { getServerSession } from "next-auth";
-import { options } from "../../../../app/api/auth/[...nextauth]/options";
+import { authOptions } from "../../../../app/api/auth/[...nextauth]/options";
 
 const WelcomeName = async () => {
   const currentDate = new Date();
-  const session = await getServerSession(options);
+  const session = await getServerSession(authOptions);
 
   return (
     <div className="text-white">
