@@ -96,6 +96,11 @@
   }
 }
 
+.backgroundColor {
+  background-color: rgb(12, 5, 32);
+  background-image: radial-gradient(at 77% 50%, #18074b, transparent 74%);
+}
+
 @layer base {
   * {
     @apply border-border;

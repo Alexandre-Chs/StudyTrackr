@@ -11,7 +11,7 @@ export default function Home() {
       <div className="flex items-center justify-center w-full">
         <Navbar />
       </div>
-      <main className="bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-third_color via-third_color to-main_color h-full relative">
+      <main className="relative h-full backgroundColor">
         <Header />
         <DashboardImage />
         <article className="w-full bg-secondary_color">
