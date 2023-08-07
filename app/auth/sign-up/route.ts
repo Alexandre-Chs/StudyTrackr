@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
   const { error } = await supabase.auth.signUp({
     email,
-    password
+    password,
     options: {
       emailRedirectTo: `${requestUrl.origin}/auth/callback`,
     },
