@@ -18,9 +18,6 @@ export default async function DashboardLayout({
   if (session === null) {
     return redirect("/auth/login");
   }
-
-  console.log(session);
-
   return (
     <div className="flex w-full h-full backgroundContent">
       <DateProvider>
