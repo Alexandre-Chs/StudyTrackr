@@ -23,7 +23,7 @@ const Header = () => {
         </p>
       </div>
       <div className="z-50 flex flex-col items-center justify-center mt-8 md:flex-row">
-        <Link href="/auth/login" className="w-full md:w-auto">
+        <Link href="/application" className="w-full md:w-auto">
           <Button
             variant="outline"
             className="w-[80%] md:w-auto mx-auto md:mx-2 flex justify-center items-center px-8 py-4"
