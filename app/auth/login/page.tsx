@@ -1,7 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const LoginPage = () => {
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 backgroundColor">
       <div>
@@ -32,6 +37,7 @@ const LoginPage = () => {
               </label>
               <input
                 name="email"
+                type="email"
                 placeholder="you@example.com"
                 required
                 className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
@@ -45,7 +51,10 @@ const LoginPage = () => {
                 >
                   Password
                 </label>
-                <a href="#" className="text-sm text-[#18074b]">
+                <a
+                  href="/auth/forgotPassword"
+                  className="text-sm text-[#18074b]"
+                >
                   Forgot Password?
                 </a>
               </div>
@@ -64,6 +73,11 @@ const LoginPage = () => {
               >
                 Log in
               </button>
+              {error ? (
+                <p className="font-medium text-red-600">
+                  Invalid email or password, retry.
+                </p>
+              ) : null}
             </div>
             <div className="flex flex-col space-y-5">
               <span className="flex items-center justify-center space-x-2">
@@ -112,58 +126,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-// "use client";
-
-// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-// import { useRouter } from "next/navigation";
-// import { useState } from "react";
-
-// export default function Login() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const router = useRouter();
-//   const supabase = createClientComponentClient();
-
-//   const handleSignUp = async () => {
-//     await supabase.auth.signUp({
-//       email,
-//       password,
-//       options: {
-//         emailRedirectTo: `${location.origin}/auth/callback`,
-//       },
-//     });
-//     router.refresh();
-//   };
-
-//   const handleSignIn = async () => {
-//     await supabase.auth.signInWithPassword({
-//       email,
-//       password,
-//     });
-//     router.refresh();
-//   };
-
-//   const handleSignOut = async () => {
-//     await supabase.auth.signOut();
-//     router.refresh();
-//   };
-
-//   return (
-//     <>
-//       <input
-//         name="email"
-//         onChange={(e) => setEmail(e.target.value)}
-//         value={email}
-//       />
-//       <input
-//         type="password"
-//         name="password"
-//         onChange={(e) => setPassword(e.target.value)}
-//         value={password}
-//       />
-//       <button onClick={handleSignUp}>Sign up</button>
-//       <button onClick={handleSignIn}>Sign in</button>
-//       <button onClick={handleSignOut}>Sign out</button>
-//     </>
-//   );
-// }

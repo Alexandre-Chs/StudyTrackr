@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const formData = await request.formData();
   const email = String(formData.get("email"));
   const password = String(formData.get("password"));
-  const username = String(formData.get("username"));
+  const confirmPassword = String(formData.get("confirmPassword"));
   const supabase = createRouteHandlerClient({ cookies });
 
   const { error } = await supabase.auth.signUp({
@@ -19,17 +19,37 @@ export async function POST(request: Request) {
       emailRedirectTo: `${requestUrl.origin}/auth/callback`,
     },
   });
+  console.log(error);
 
-  if (error) {
+  if (password !== confirmPassword) {
+    console.log("je suis dans lerreur de password");
     return NextResponse.redirect(
-      `${requestUrl.origin}/auth/login?error=Could not authenticate user`,
+      `${requestUrl.origin}/auth/register?error=Password must be identical`,
       {
         status: 301,
       }
     );
   }
 
-  return NextResponse.redirect(`${requestUrl.origin}/auth/login`, {
+  if (password.length < 8) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}/auth/register?error=Password must be at least 8 characters long`,
+      {
+        status: 301,
+      }
+    );
+  }
+
+  if (error) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}/auth/register?error=Email already exists or rate limit exceeded ( wait 1 hour ).`,
+      {
+        status: 301,
+      }
+    );
+  }
+
+  return NextResponse.redirect(`${requestUrl.origin}/auth/verifyEmail`, {
     status: 301,
   });
 }
