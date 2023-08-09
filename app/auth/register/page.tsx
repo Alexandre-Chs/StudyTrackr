@@ -1,9 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 const RegisterPage = () => {
   const searchParams = useSearchParams();
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShowPassword = () => {
+    setShowPassword((current) => !current);
+  };
+
   let error = searchParams.get("error");
 
   return (
@@ -30,6 +36,23 @@ const RegisterPage = () => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-black"
                 >
+                  Username
+                </label>
+                <input
+                  name="username"
+                  type="text"
+                  placeholder="John Doe"
+                  maxLength={18}
+                  minLength={2}
+                  required
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-black"
+                >
                   Email
                 </label>
                 <input
@@ -40,7 +63,6 @@ const RegisterPage = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
               </div>
-
               <div>
                 <label
                   htmlFor="password"
@@ -48,13 +70,25 @@ const RegisterPage = () => {
                 >
                   Password
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="••••••••"
-                  required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="••••••••"
+                    required
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                  <div
+                    onClick={handleShowPassword}
+                    className="absolute top-[10px] right-5 cursor-pointer outline-none"
+                  >
+                    {showPassword ? (
+                      <EyeOff color="#b6b8bd" />
+                    ) : (
+                      <Eye color="#b6b8bd" />
+                    )}
+                  </div>
+                </div>
               </div>
               <div>
                 <label
@@ -63,13 +97,25 @@ const RegisterPage = () => {
                 >
                   Confirm password
                 </label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="••••••••"
-                  required
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    placeholder="••••••••"
+                    required
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                  <div
+                    onClick={handleShowPassword}
+                    className="absolute top-[10px] right-5 cursor-pointer outline-none"
+                  >
+                    {showPassword ? (
+                      <EyeOff color="#b6b8bd" />
+                    ) : (
+                      <Eye color="#b6b8bd" />
+                    )}
+                  </div>
+                </div>
               </div>
               <div className="flex items-start">
                 <div className="flex items-center h-5">

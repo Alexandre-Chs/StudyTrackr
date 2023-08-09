@@ -1,14 +1,25 @@
 import React from "react";
 import { month } from "../../../components/utils/months.js";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const WelcomeName = async () => {
   const currentDate = new Date();
-  // const session = await getServerSession();
+
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const username = await prisma.user.findUnique({
+    where: {
+      email: user?.email,
+    },
+  });
 
   return (
     <div className="text-white">
-      {/* Setup name on database login after */}
-      {/* <h3 className="text-4xl font-medium">Hello {session?.user?.name} !</h3> */}
+      <h3 className="text-4xl font-medium">Hello {username?.username} !</h3>
       <p className="text-base text-textViolet">
         {currentDate.getDate()} {month[currentDate.getMonth()]}{" "}
         {currentDate.getFullYear()}

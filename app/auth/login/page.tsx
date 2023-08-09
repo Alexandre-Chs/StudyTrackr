@@ -1,12 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 const LoginPage = () => {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword((current) => !current);
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 backgroundColor">
       <div>
@@ -58,13 +64,25 @@ const LoginPage = () => {
                   Forgot Password?
                 </a>
               </div>
-              <input
-                type="password"
-                name="password"
-                placeholder="••••••••"
-                required
-                className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
-              />
+              <div className="relative w-full">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="••••••••"
+                  required
+                  className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+                />
+                <div
+                  onClick={handleShowPassword}
+                  className="absolute top-[10px] right-5 cursor-pointer outline-none"
+                >
+                  {showPassword ? (
+                    <EyeOff color="#b6b8bd" />
+                  ) : (
+                    <Eye color="#b6b8bd" />
+                  )}
+                </div>
+              </div>
             </div>
             <div className="w-full mx-auto">
               <button

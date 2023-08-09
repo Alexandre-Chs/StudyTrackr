@@ -1,7 +1,7 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-
+import { prisma } from "../../../prisma/prismaClient";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
@@ -9,6 +9,7 @@ export async function POST(request: Request) {
   const formData = await request.formData();
   const email = String(formData.get("email"));
   const password = String(formData.get("password"));
+  const username = String(formData.get("username"));
   const confirmPassword = String(formData.get("confirmPassword"));
   const supabase = createRouteHandlerClient({ cookies });
 
@@ -19,10 +20,26 @@ export async function POST(request: Request) {
       emailRedirectTo: `${requestUrl.origin}/auth/callback`,
     },
   });
-  console.log(error);
+
+  try {
+    if (!error) {
+      const user = await prisma.user.create({
+        data: {
+          email: email,
+          username: username,
+        },
+      });
+    }
+  } catch (err) {
+    return NextResponse.redirect(
+      `${requestUrl.origin}/auth/register?error=Email already exists.`,
+      {
+        status: 301,
+      }
+    );
+  }
 
   if (password !== confirmPassword) {
-    console.log("je suis dans lerreur de password");
     return NextResponse.redirect(
       `${requestUrl.origin}/auth/register?error=Password must be identical`,
       {
@@ -42,7 +59,7 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.redirect(
-      `${requestUrl.origin}/auth/register?error=Email already exists or rate limit exceeded ( wait 1 hour ).`,
+      `${requestUrl.origin}/auth/register?error=Rate limit exceeded.`,
       {
         status: 301,
       }

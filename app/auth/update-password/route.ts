@@ -14,8 +14,6 @@ export async function POST(request: Request) {
     password: password,
   });
 
-  console.log(error);
-
   return NextResponse.redirect(`${requestUrl.origin}/auth/login`, {
     status: 301,
   });
