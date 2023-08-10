@@ -13,8 +13,8 @@ const WelcomeName = async () => {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (user?.user_metadata.user_name) {
-    username = user?.user_metadata.user_name;
+  if (user?.user_metadata.full_name) {
+    username = user?.user_metadata.full_name;
   } else {
     try {
       await prisma.user
