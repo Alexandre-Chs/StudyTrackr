@@ -12,7 +12,8 @@ export async function POST(request: Request) {
   const supabase = createRouteHandlerClient({ cookies });
 
   await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:3000/auth/callback?next=/auth/updatePassword",
+    redirectTo:
+      "https://study-trackr.vercel.app/auth/callback?next=/auth/updatePassword",
   });
 
   return NextResponse.redirect(`${requestUrl.origin}/auth/login`, {
