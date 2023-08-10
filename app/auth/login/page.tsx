@@ -4,15 +4,25 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const LoginPage = () => {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
   const [showPassword, setShowPassword] = useState(false);
+  const supabase = createClientComponentClient();
 
   const handleShowPassword = () => {
     setShowPassword((current) => !current);
   };
+
+  const handleGithubLogin = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 backgroundColor">
       <div>
@@ -103,11 +113,11 @@ const LoginPage = () => {
                 <span className="font-normal text-gray-500">or login with</span>
                 <span className="h-px bg-gray-400 w-14"></span>
               </span>
-              <div className="flex flex-col space-y-4 w-[250px] mx-auto">
-                <a
-                  href="#"
-                  className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md group hover:bg-gray-800 focus:outline-none"
-                >
+              <div
+                className="flex flex-col space-y-4 w-[250px] mx-auto"
+                onClick={handleGithubLogin}
+              >
+                <div className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md cursor-pointer group hover:bg-gray-800 focus:outline-none">
                   <span>
                     <svg
                       className="w-5 h-5 text-gray-800 fill-current group-hover:text-white"
@@ -121,7 +131,7 @@ const LoginPage = () => {
                   <span className="text-sm font-medium text-gray-800 group-hover:text-white">
                     Github
                   </span>
-                </a>
+                </div>
               </div>
             </div>
           </form>
