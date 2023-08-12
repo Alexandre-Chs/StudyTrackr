@@ -7,7 +7,7 @@ import Objectives from "../components/Application/Home/Objectives";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-start justify-between w-full h-full p-10 xl:flex-row">
+    <div className="flex flex-col items-start justify-between w-full h-full xl:flex-row">
       <div className="w-full max-w-5xl">
         <WelcomeName />
         <TaskToDo />

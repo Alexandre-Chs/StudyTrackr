@@ -17,11 +17,11 @@ const CalendarNav = () => {
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>Schedule</AccordionTrigger>
-            <AccordionContent className="text-textViolet">
-              <Link href="/application/schedule">All tasks</Link>
+            <AccordionContent className="mt-2 text-textViolet">
+              <Link href="/application/schedule/allTasks">All tasks</Link>
             </AccordionContent>
             <AccordionContent className="text-textViolet">
-              <Link href="#">Add new task</Link>
+              <Link href="/application/schedule/addTask">Add new task</Link>
             </AccordionContent>
             <AccordionContent className="text-textViolet">
               <Link href="#">Tasks with high priority</Link>
