@@ -8,8 +8,22 @@ datasource db {
 }
 model User {
   id            String    @id @default(cuid())
-  username      String?
-  email         String?   @unique
+  username      String
+  email         String  @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  termsAndConds Boolean   @default(false)
+  tasks Task[]
+}
+
+model Task {
+  id String @id @default(cuid())
+  user User @relation(fields: [user_id], references: [id])
+  user_id String 
+  priority Int @db.SmallInt
+  status   String   @db.VarChar(15)
+  title   String   @db.VarChar(80)
+  description String? 
+  schoolSubject String @db.VarChar(40)
+  dateToDo DateTime
 }
