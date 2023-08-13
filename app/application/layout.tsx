@@ -1,9 +1,10 @@
-import { DateProvider } from "app/components/Application/Context/DateProvider";
+import { DateProvider } from "../components/Application/Context/DateProvider";
 import Navbar from "../components/Application/navbar/Navbar";
 import "../components/Application/styles/application.css";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import React from "react";
 
 // Bug with vercel, need to add dynamic here...
 export const dynamic = "force-dynamic";
@@ -26,7 +27,7 @@ export default async function DashboardLayout({
     <div className="flex w-full h-full backgroundContent">
       <DateProvider>
         <Navbar />
-        {children}
+        <div className="w-full h-full p-10">{children}</div>
       </DateProvider>
     </div>
   );

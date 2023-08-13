@@ -2,13 +2,15 @@ import React from "react";
 import { month } from "../../../components/utils/months.js";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { prisma } from "prisma/prisma.js";
+
+import { prisma } from "../../../../prisma/prisma";
 
 const WelcomeName = async () => {
   const currentDate = new Date();
   const supabase = createServerComponentClient({ cookies });
 
-  let username;
+  let username: string = "";
+
   const {
     data: { user },
   } = await supabase.auth.getUser();

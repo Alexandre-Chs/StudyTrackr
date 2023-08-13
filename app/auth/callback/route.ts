@@ -1,6 +1,7 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { prisma } from "../../../prisma/prisma";
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
@@ -9,7 +10,23 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = createRouteHandlerClient({ cookies });
-    await supabase.auth.exchangeCodeForSession(code);
+    const dataFromProvider = await supabase.auth.exchangeCodeForSession(code);
+
+    const ifUserExists = await prisma.user.findUnique({
+      where: {
+        email: dataFromProvider.data.user.email,
+      },
+    });
+
+    if (ifUserExists === null) {
+      const createUserFromProviderInDB = await prisma.user.create({
+        data: {
+          email: dataFromProvider.data.user.email,
+          // empty username because i take username in WelcomeName with session provider
+          username: "",
+        },
+      });
+    }
   }
 
   if (next) {
