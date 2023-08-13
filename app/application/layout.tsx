@@ -1,4 +1,4 @@
-import { DateProvider } from "app/components/Application/Context/DateProvider";
+import { DateProvider } from "../components/Application/Context/DateProvider";
 import Navbar from "../components/Application/navbar/Navbar";
 import "../components/Application/styles/application.css";
 import { redirect } from "next/navigation";
