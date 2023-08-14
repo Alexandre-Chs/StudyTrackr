@@ -1,70 +1,91 @@
-import React from "react";
+"use client";
+
+import React, { Suspense, useEffect, useState } from "react";
 import NameOption from "../../../components/Application/common/NameOption";
 import Task from "../../../components/Application/common/Task";
+import FilterTasks from "../../../components/tools/FilterTasks";
+import { Button } from "../../../components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+type TaskProps = {
+  id: string;
+  user_id: string;
+  priority: number;
+  status: "inProgress" | "todo" | "finished";
+  title: string;
+  description: string;
+  schoolSubject: string;
+  dateToDo: Date;
+};
 
 const AllTasks = () => {
+  const [tasks, setTasks] = useState<any>();
+  const [filter, setFilter] = useState<string>();
+  const [currentDate, setCurrentDate] = useState<Date>();
+  const [counterDate, setCounterDate] = useState<number>(0);
+
+  useEffect(() => {
+    const currentDate = new Date();
+    // modifier la date en fonction du +1
+    currentDate.setDate(currentDate.getDate() + counterDate);
+    setCurrentDate(currentDate);
+
+    const getAllTasks = async () => {
+      const response = await fetch(`/api/get-tasks?date=${currentDate}`);
+      const data = await response.json();
+      setTasks(data.task);
+    };
+    getAllTasks();
+  }, [counterDate]);
+
+  const handleTasks = () => {
+    if (tasks !== undefined && tasks.length > 0 && tasks !== null) {
+      const filteredTasks = FilterTasks(tasks, filter);
+
+      return filteredTasks.map((task: TaskProps) => (
+        <Task
+          key={task.id}
+          priority={task.priority}
+          status={task.status}
+          title={task.title}
+          schoolSubject={task.schoolSubject}
+          description={task.description}
+        />
+      ));
+    }
+  };
+
+  const handleDate = (e) => {
+    if (e.currentTarget.value === "+") {
+      setCounterDate((current) => current + 1);
+    } else {
+      setCounterDate((current) => current - 1);
+    }
+  };
+
   return (
     <div className="flex flex-col">
-      <div>
-        <NameOption option={"All tasks"} />
+      <div className="flex items-center justify-between">
+        <NameOption option={"All tasks"} currentDate={currentDate} />
+        <div className="text-textViolet">
+          <button
+            onClick={handleDate}
+            value="-"
+            className="p-4 md:p-2 rounded-xl hover:bg-lightViolet"
+          >
+            <ChevronLeft />
+          </button>
+          <button
+            onClick={handleDate}
+            value="+"
+            className="p-4 md:p-2 rounded-xl hover:bg-lightViolet"
+          >
+            <ChevronRight />
+          </button>
+        </div>
       </div>
       <div className="mt-12">
-        <Task
-          priority={4}
-          status="inProgress"
-          title="Préparer la pâte à boudin"
-          description="Préparez une délicieuse pâte à boudin en mélangeant de la viande hachée avec des épices savoureuses. Ensuite, façonnez-la en saucisses et faites-les cuire jusqu'à ce qu'elles soient bien dorées."
-          schoolSubject="Cuisine"
-        />
-        <Task
-          priority={2}
-          status="todo"
-          title="Résoudre les équations quadratiques"
-          description="Utilisez les méthodes de résolution appropriées pour résoudre des équations quadratiques complexes. Identifiez les racines et vérifiez vos solutions pour vous assurer de leur exactitude."
-          schoolSubject="Mathématiques"
-        />
-        <Task
-          priority={3}
-          status="finished"
-          title="Comprendre le processus de photosynthèse"
-          description="Explorez en profondeur le processus de photosynthèse qui se produit dans les plantes. Découvrez comment elles capturent la lumière solaire et la transforment en énergie."
-          schoolSubject="Biologie"
-        />
-        <Task
-          priority={1}
-          status="inProgress"
-          title="Préparer une présentation sur la Renaissance"
-          description="Recherchez et compilez des informations sur la période de la Renaissance. Mettez en évidence les œuvres artistiques, les découvertes scientifiques et les événements historiques importants de cette époque."
-          schoolSubject="Histoire de l'Art"
-        />
-        <Task
-          priority={2}
-          status="todo"
-          title="Lire le roman 'Great Expectations'"
-          description="Plongez dans l'univers captivant du roman de Charles Dickens. Suivez l'histoire de Pip et explorez les thèmes complexes de l'amour, de la classe sociale et de l'ambition."
-          schoolSubject="Anglais"
-        />
-        <Task
-          priority={3}
-          status="finished"
-          title="Composer une mélodie au piano"
-          description="Libérez votre créativité musicale en composant une mélodie originale au piano. Expérimentez avec les accords, les harmonies et les motifs pour créer une pièce musicale unique."
-          schoolSubject="Musique"
-        />
-        <Task
-          priority={4}
-          status="inProgress"
-          title="Participer à des exercices de gymnastique"
-          description="Rejoignez une séance d'exercices de gymnastique pour améliorer votre flexibilité, votre force et votre équilibre. Suivez les instructions de l'instructeur et engagez-vous dans une séance d'entraînement dynamique."
-          schoolSubject="Éducation physique"
-        />
-        <Task
-          priority={1}
-          status="todo"
-          title="Créer une peinture abstraite"
-          description="Laissez libre cours à votre créativité artistique en créant une peinture abstraite. Expérimentez avec les formes, les couleurs et les textures pour produire une œuvre qui exprime vos émotions."
-          schoolSubject="Art plastique"
-        />
+        <div className="text-white">{handleTasks()}</div>
       </div>
     </div>
   );

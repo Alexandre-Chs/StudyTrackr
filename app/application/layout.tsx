@@ -4,7 +4,8 @@ import "../components/Application/styles/application.css";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import React from "react";
+import React, { Suspense } from "react";
+import Loading from "./loading";
 
 // Bug with vercel, need to add dynamic here...
 export const dynamic = "force-dynamic";
@@ -26,8 +27,10 @@ export default async function DashboardLayout({
   return (
     <div className="flex w-full h-full backgroundContent">
       <DateProvider>
-        <Navbar />
-        <div className="w-full h-full p-10">{children}</div>
+        <Suspense fallback={<Loading />}>
+          <Navbar />
+          <div className="w-full h-full p-10">{children}</div>
+        </Suspense>
       </DateProvider>
     </div>
   );

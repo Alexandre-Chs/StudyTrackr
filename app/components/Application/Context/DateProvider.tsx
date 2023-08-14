@@ -27,7 +27,11 @@ export function DateProvider({ children }: PropsWithChildren) {
   const handleSelectedDate = (value: Value) => {
     setSelectedDate(value);
   };
-  const values = { selectedDate, handleSelectedDate, setSelectedDate };
+  const values = {
+    selectedDate,
+    handleSelectedDate,
+    setSelectedDate,
+  };
 
   return <DateContext.Provider value={values}>{children}</DateContext.Provider>;
 }

@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const priority = Number(formData.get("priority"));
   const status = String(formData.get("status"));
   const schoolSubject = String(formData.get("schoolSubject"));
-  const date = String(formData.get("date"));
+  const date = <string>formData.get("date");
   const formattedDate = new Date(date).toISOString();
   const requestUrl = new URL(request.url);
 
@@ -26,8 +26,6 @@ export async function POST(request: Request) {
       email: userEmail,
     },
   });
-
-  console.log(userId);
 
   if (userId.id) {
     const createTask = await prisma.task.create({
